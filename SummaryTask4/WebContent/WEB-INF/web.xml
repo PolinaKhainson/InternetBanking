@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--============================================================ 
+	Deployment 
+	Descriptor: web.xml
+ ============================================================= -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+
+	<display-name>SummaryTask4</display-name>
+
+	<welcome-file-list>
+		<welcome-file>login.jsp</welcome-file>
+	</welcome-file-list>
+
+<!--========================================================= 
+	Controller 
+============================================================= -->
+
+	<servlet>
+		<servlet-name>Controller</servlet-name>
+		<servlet-class>ua.nure.khainson.SummaryTask4.web.Controller</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Controller</servlet-name>
+		<url-pattern>/controller</url-pattern>
+	</servlet-mapping>
+<!--=========================================================
+	Encoding Support Filter 
+ ============================================================ -->
+ 	<filter>
+ 		<filter-name>EncodingFilter</filter-name>
+ 		<filter-class>ua.nure.khainson.SummaryTask4.web.filter.EncodingFilter</filter-class>
+ 		<init-param>
+ 			<param-name>encoding</param-name>
+ 			<param-value>UTF-8</param-value>
+ 		</init-param>
+ 	</filter>
+ 	<filter-mapping>
+ 		<filter-name>EncodingFilter</filter-name>
+ 		<url-pattern>/WEB-INF/jsp/*</url-pattern>
+ 		<servlet-name>Controller</servlet-name>
+ 	</filter-mapping>
+ 	
+ 	<!--=========================================================
+ 	Encoding Support Filter  
+ 	============================================================ --> 
+ 	<!-- <filter>
+ 		<filter-name>NoCacheFilter</filter-name>
+ 		<filter-class>ua.nure.khainson.SummaryTask4.web.filter.NoCacheFilter</filter-class>
+ 	</filter>
+ 	<filter-mapping>
+ 		<filter-name>NoCacheFilter</filter-name>
+ 		<url-pattern>login.jsp</url-pattern>
+ 		<servlet-name>Controller</servlet-name>
+ 	</filter-mapping> -->
+<!-- ========================================================
+	Common Access Filter
+============================================================= -->
+	<filter>
+		<filter-name>CommandAccessFilter</filter-name>
+		<filter-class>ua.nure.khainson.SummaryTask4.web.filter.CommandAccessFilter</filter-class>
+		<init-param>
+			<param-name>admin</param-name>
+			<param-value>listUsers listAllPayments listAllAccounts lockAccount unlockAccount 
+			lockUser unlockUser deleteUser createCreditCard createAccount sendAccount
+			createCreditCard sendCreditCard assignCreditCard sortAccountsByOwner</param-value>
+		</init-param>
+		<init-param>
+			<param-name>client</param-name>
+			<param-value>listUserPayments listUserAccounts createPayment sendPayment preparePayment 
+			confirmPayment confirmPreparedPayment createPdfReport cancelPayment listAccountsForSelelctedCard lockAccount unlockAccount addFunds
+			sortPayments sortAccounts
+			</param-value>
+		</init-param>
+		<init-param>
+			<param-name>common</param-name>
+			<param-value>logout noCommand viewSettings updateSettings</param-value>
+		</init-param>
+		<init-param>
+			<param-name>out-of-control</param-name>
+			<param-value>login changeLocale registrateUser</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CommandAccessFilter</filter-name>
+		<servlet-name>Controller</servlet-name>
+	</filter-mapping>
+
+<!-- ======================================================== 
+	Context Params for internationalization
+============================================================= -->
+
+  <context-param>
+    <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+    <param-value>resources</param-value>
+  </context-param>
+  <context-param>
+    <param-name>javax.servlet.jsp.jstl.fmt.locale</param-name>
+    <param-value>en-GB</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>locales</param-name>
+  	<param-value>/WEB-INF/locales.properties</param-value>
+  </context-param>
+<!-- ======================================================== 
+	Context Listener 
+============================================================= -->
+
+	<listener>
+		<listener-class>ua.nure.khainson.SummaryTask4.web.listener.ContextListener</listener-class>
+	</listener>
+
+</web-app>

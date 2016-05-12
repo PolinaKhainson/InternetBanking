@@ -1,0 +1,278 @@
+/яяя***************************************************************
+CSS for all JSP pages
+***************************************************************/
+body {
+	margin: 0;
+}
+
+table {
+	border-collapse:collapse;
+}
+
+td {
+	border:1px solid black;
+	padding: 2px;
+}
+
+
+#header, #footer, .content {
+	border: 0px solid;	
+}
+
+
+
+/***************************************************************
+Style of the main table
+***************************************************************/
+#main-container {
+	width: 100%;
+	height: 100%;
+}
+
+/***************************************************************
+Header style (TD tag in the first top row)
+***************************************************************/
+#header {
+	background: #80FF80;
+	padding: 0px;
+}
+
+/***************************************************************
+Style for the left located head menu (DIV tag at left)
+***************************************************************/
+#leftHeader {
+	background: #80FF80;
+	float: left;
+	margin-left: 10px;
+	padding: 2px;
+}
+/***************************************************************
+Style for the left located head menu (DIV tag at left)
+***************************************************************/
+
+/***************************************************************
+Style for the right located head menu (DIV tag at right)
+***************************************************************/
+#rightHeader {
+	background: #80FF80;
+	float: right;
+	text-align: right;
+	margin-right: 10px;
+	padding: 2px;
+}
+
+#languageForm {
+    display: inline;
+    margin-right: 30px;
+	padding: 2px;
+}
+
+/***************************************************************
+Content styles (TD tag in the main middle row)
+***************************************************************/
+.content {
+	height: 100%;
+	background: #BBFFBB;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	text-align: left;
+	vertical-align: top;
+}
+
+/***************************************************************
+Footer style (TD tag in the last bottom row)
+***************************************************************/
+#footer {
+	text-align: center;
+	background: #80FF80;
+}
+
+/***************************************************************
+Style for the ERROR message
+***************************************************************/
+.error {
+	font-size: large;
+	color: rgb(204, 0, 0);
+}
+
+/***************************************************************
+Style for the Lock objects
+***************************************************************/
+.locked {
+	color: rgb(204, 0, 0);
+}
+
+/***************************************************************
+Style for the Waiting for unlock objects
+***************************************************************/
+.waiting {
+	color: rgb(255, 128, 0);
+}
+
+/***************************************************************
+Style for the Unlocked objects
+***************************************************************/
+.unlocked {
+	color: rgb(0, 128, 0);
+}
+
+/***************************************************************
+Miscellaneous
+***************************************************************/
+.center {
+	text-align: center;
+	vertical-align: middle;
+}
+
+.noborder {
+	border: 2px solid red;	
+}
+
+/***************************************************************
+Login form (login.jsp)
+***************************************************************/
+#login_form > fieldset {
+	display: inline;
+}
+
+#login_form > input[type=submit] {
+	margin-top: 5px;
+}
+
+/***************************************************************
+Settings form (settings.jsp)
+***************************************************************/
+#settings_form > div > p {
+	font-size: 17px;
+	margin-top: 5px;
+	margin-bottom: 2px;
+}
+
+#settings_form > input[type=submit] {
+	margin-top: 10px;
+}
+
+/***************************************************************
+List users table (users.jsp)
+***************************************************************/
+#list_user_table > thead > tr {
+	text-align: center;
+}
+
+#list_user_table td + td + td {
+	text-align: center;
+}
+
+#list_user_table > tbody td + td + td + td {
+	text-align: left;
+}
+
+td.noBorder {
+	border:0;
+}
+
+
+
+
+/***************************************************************
+List user accounts table (accounts.jsp)
+***************************************************************/
+#list_user_accounts_table > thead > tr {
+	text-align: center;
+}
+
+#list_user_accounts_table td + td + td {
+	text-align: center;
+}
+
+#list_user_accounts_table > tbody td + td + td + td {
+	text-align: left;
+}
+
+td.noBorder {
+	border:0;
+}
+
+.successful {
+	color: rgb(0, 128, 0);
+}
+
+/***************************************************************
+List user payments table (payments.jsp)
+***************************************************************/
+#list_user_payments_table > thead > tr {
+	text-align: center;
+}
+
+#list_user_payments_table td + td + td {
+	text-align: center;
+}
+
+#list_user_payments_table > tbody td + td + td + td {
+	text-align: left;
+}
+
+td.noBorder {
+	border:0;
+}
+
+/***************************************************************
+List all accounts table (all_accounts.jsp)
+***************************************************************/
+#list_all_accounts_table > thead > tr {
+	text-align: center;
+}
+
+#list_all_accounts_table td + td + td {
+	text-align: center;
+}
+
+#list_all_accounts_table > tbody td + td + td + td {
+	text-align: left;
+}
+/***************************************************************
+List all payments table (all_payments.jsp)
+***************************************************************/
+#list_all_payments_table > thead > tr {
+	text-align: center;
+}
+
+#list_all_payments_table td + td + td {
+	text-align: center;
+}
+
+#list_all_payments_table > tbody td + td + td + td {
+	text-align: left;
+}
+/***************************************************************
+All payments (all_payments.jsp)
+***************************************************************/
+
+#createAccountForm {
+    display: inline;
+    margin-right: 30px;
+	padding: 2px;
+}
+#createCreditCardForm {
+    display: inline;
+    margin-right: 30px;
+	padding: 2px;
+}
+#bottomMargin {
+	margin-bottom: 20px;
+}
+
+/***************************************************************
+Create Credit Card (create_creadit_card.jsp)
+***************************************************************/
+#selectedMonth{
+    display: inline;
+    margin-right: 30px;
+	padding: 2px;
+}
+#selectedYear{
+    display: inline;
+    margin-right: 30px;
+	padding: 2px;
+}

@@ -1,0 +1,23 @@
+<head>
+
+	<title>
+		${title}
+	</title>
+	
+<%--=========================================================================== 
+Bind CSS document.
+===========================================================================--%> 
+	<link rel="stylesheet" type="text/css" media="screen" href="style/st4.css"/>
+	
+<%--=========================================================================== 
+If you define http-equiv attribute, set the content type and the charset the same
+as you set them in a page directive.
+===========================================================================--%> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Expires" content="Sat, 18 Feb 2016 00:00:00 GMT">
+	
+<!-- 	<script type="text/javascript" src="/scripts/sorttable.js"></script>  -->
+		
+</head>

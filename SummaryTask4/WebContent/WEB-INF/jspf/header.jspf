@@ -1,0 +1,127 @@
+<%--=========================================================================== 
+Header (top area). 
+===========================================================================--%> 
+
+<%@ page import="ua.nure.khainson.SummaryTask4.db.Role"%>
+<%@ include file="/WEB-INF/jspf/directive/page.jspf"%>
+<%@ include file="/WEB-INF/jspf/directive/taglib.jspf"%>
+
+<c:set var="currentLocale" value="${not empty param.currentLocale ? param.currentLocale : not empty currentLocale ? currentLocale : 'en-GB'}" scope="session" />
+<fmt:setLocale value="${currentLocale}"/>
+<fmt:setBundle basename="resources"/>
+<tr>
+	<td id="header">
+
+		<c:if test="${not empty user}">
+<%--=========================================================================== 
+This is the user menu. 
+===========================================================================--%> 
+
+			<div id="leftHeader">
+				<c:choose>
+
+<%--=========================================================================== 
+This way we define the ADMIN MENU. 
+===========================================================================--%> 
+					<c:when test="${userRole.name == 'admin' }">
+						<a href="controller?command=listUsers"><fmt:message key="header_jspf.label.allUsers" /></a> &nbsp;
+						<a href="controller?command=listAllAccounts"><fmt:message key="header_jspf.label.allAccounts" /></a> &nbsp;
+						<a href="controller?command=listAllPayments"><fmt:message key="header_jspf.label.allPayments" /></a> &nbsp;
+					</c:when>
+
+		
+<%--=========================================================================== 
+This way we define the USER MENU.
+===========================================================================--%> 
+					<c:when test="${userRole.name == 'client'}">
+						<a href="controller?command=listUserPayments"><fmt:message key="header_jspf.label.myPaments" /></a> &nbsp;
+						<a href="controller?command=listUserAccounts"><fmt:message key="header_jspf.label.myAccounts" /></a> &nbsp;
+					</c:when>
+				</c:choose>
+	
+<%--=========================================================================== 
+This way we define the settings anchor.
+===========================================================================--%> 
+				<a href="controller?command=viewSettings"><fmt:message key="header_jspf.label.settings" /></a> &nbsp;
+
+			</div>
+
+
+
+<%--=========================================================================== 
+This way we define the menu located at the right of header. 
+===========================================================================--%> 
+			<div id="rightHeader" >
+
+<%--=========================================================================== 
+Select menu for languages.  
+===========================================================================--%> 
+
+				<form id = "languageForm" action = "controller">
+					<input type="hidden" name="command" value="changeLocale" />
+					<input type="hidden" name="pageName" value="${pageName}" />
+					<input type="hidden" name="commonPage" value="${commonPage}" />
+					<fmt:message key="header_jspf.label.language" />
+          		  	<select id="currentLocale" name="currentLocale" onchange="submit()">
+         		 	  	<c:forEach items="${locales}" var="locale">
+							<c:set var="selected" value="${locale.key == currentLocale || (empty currentLocale && locale.key == pageContext.request.locale)? 'selected' : '' }"/>
+							<option value="${locale.key}" ${selected}>${locale.value}</option>
+            			</c:forEach>
+            		</select>
+        		</form>
+       
+<%--=========================================================================== 
+Type user name if the user object is presented in the current session.  
+===========================================================================--%> 
+				<c:out value="${user.firstName} ${user.lastName}"/>
+	
+<%--=========================================================================== 
+Type user role name if the user object is presented in the current session.  
+===========================================================================--%> 
+				<c:if test="${not empty userRole}">
+					<c:if test="${userRole.name == 'admin'}">
+						(<fmt:message key="header_jspf.label.admin" />)
+					</c:if>
+					<c:if test="${userRole.name == 'client'}">
+					(<fmt:message key="header_jspf.label.client" />)
+					</c:if>
+				</c:if>
+
+
+<%--=========================================================================== 
+Type link to logout  
+===========================================================================--%> 
+				<a href="controller?command=logout">
+					<fmt:message key="header_jspf.label.logout" />
+				</a> 	
+	
+
+			</div>
+	</c:if>
+
+	<c:if test="${empty user}">
+		<div id="rightHeader">
+			<form id = "languageForm" action = "controller">
+				<input type="hidden" name="command" value="changeLocale" />
+				<input type="hidden" name="pageName" value="${pageName}" />
+				<input type="hidden" name="commonPage" value="${commonPage}" />
+				<input type="hidden" name="loginPage" value="${loginPage}" />
+				<fmt:message key="header_jspf.label.language" />
+            	<select id="currentLocale" name="currentLocale" onchange="submit()">
+           			<c:forEach items="${locales}" var="locale">
+						<c:set var="selected" value="${locale.key == currentLocale ? 'selected' : '' }"/>
+						<option value="${locale.key}" ${selected}>${locale.value}</option>
+            		</c:forEach>
+           		</select>
+       		</form>
+			<c:if test="${title ne 'Login'}">
+				<a href="login.jsp">Login</a>
+		
+			</c:if>
+		</div>
+	</c:if>
+	
+</td>
+</tr>
+
+
